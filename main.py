@@ -3,12 +3,12 @@ import sys
 from Adafruit_IO import MQTTClient
 import time
 import random
-from simpleAI import *
-from uart import *
+# from simpleAI import *
+# from uart import *
 
 AIO_FEED_IDs = ["button1", "button2"]
 AIO_USERNAME = "NPAnh"
-# AIO_KEY = "aio_gWIA19BHnsanudG2d7M4oxVErObP"
+AIO_KEY = "aio_gWIA19BHnsanudG2d7M4oxVErObP"
 
 def connected(client):
     print("Ket noi thanh cong ...")
@@ -58,16 +58,16 @@ while True:
             light = random.randint(100, 500)
             client.publish("sensor3", light)
             sensor_type = 0
-    counter_ai = counter_ai - 1
-    if counter_ai <= 0:
-        counter_ai = 5
-        prev_ai = ai_result
-        ai_result = image_detector()
-        if prev_ai != ai_result:
-            client.publish("AI", ai_result)    
-        print("AI_Output: ", ai_result)
+    # counter_ai = counter_ai - 1
+    # if counter_ai <= 0:
+    #     counter_ai = 5
+    #     prev_ai = ai_result
+    #     ai_result = image_detector()
+    #     if prev_ai != ai_result:
+    #         client.publish("AI", ai_result)    
+    #     print("AI_Output: ", ai_result)
         
-    readSerial(client)
+    # readSerial(client)
     # data = ser.readline().decode('utf-8')
     # print(f'Received: {data}', end='')
     time.sleep(1)
